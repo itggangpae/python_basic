@@ -538,6 +538,88 @@ c = calc()
 print(c(1), c(2))
 """
 
+"""
+#Decorator 사용
+def deco(func):
+    def inner():
+        print('running inner()')
+    return inner #deco () 가 inner () 함수 객체를 반환
+@deco
+def target(): #target ( )을 deco로 Decorate
+    print('running target()')
 
+target() #Decorate된 target()을 호출하면 실제로는 inner ()를 실행
+"""
 
+"""
+import time
 
+#Decorate 된 함수를 호출할 때 마다 시간을 측정해서 실행에 소요된 시간, 전달된 인수, 반환값을 출력하는 Decorate
+def clock(func):
+    def clocked(*args):
+        t0 = time.time()
+        result = func(*args)
+        elapsed = time.time() - t0
+        name = func.__name__
+        arg_str = ', '.join(repr(arg) for arg in args)
+        print('[%0.8fs] %s(%s) -> %r' % (elapsed, name, arg_str, result))
+        return result
+    return clocked
+
+@clock
+def snooze(seconds):
+    time.sleep(seconds)
+
+@clock
+def factorial(n):
+    return 1 if n < 2 else n*factorial(n-1)
+
+print('*' * 40, 'Calling snooze(.123)')
+snooze(.123)
+print('*' * 40, 'Calling factorial(6)')
+print('6! =', factorial(6))
+"""
+
+"""
+import time
+def clock(func):
+    def clocked(*args):
+        t0 = time.time()
+        result = func(*args)
+        elapsed = time.time() - t0
+        name = func.__name__
+        arg_str = ', '.join(repr(arg) for arg in args)
+        print('[%0.8fs] %s(%s) -> %r' % (elapsed, name, arg_str, result))
+        return result
+    return clocked
+
+@clock
+def fibonacci(n):
+    if n < 2:
+        return n
+    return fibonacci(n-2) + fibonacci(n-1)
+
+print(fibonacci(6))
+"""
+
+import functools
+import time
+def clock(func):
+    def clocked(*args):
+        t0 = time.time()
+        result = func(*args)
+        elapsed = time.time() - t0
+        name = func.__name__
+        arg_str = ', '.join(repr(arg) for arg in args)
+        print('[%0.8fs] %s(%s) -> %r' % (elapsed, name, arg_str, result))
+        return result
+    return clocked
+
+@functools.lru_cache()
+@clock
+def fibonacci(n):
+    if n < 2:
+        return n
+    return fibonacci(n-2) + fibonacci(n-1)
+
+print(fibonacci(6))

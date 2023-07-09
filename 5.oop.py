@@ -766,3 +766,38 @@ print(getattr (current_module, 'a')) # 현재 모듈에서 a의 값 얻어내기
 """
 
 
+"""
+import sys
+for path in sys.path:
+    print(path)
+"""
+
+"""
+import sys
+import mymath
+
+#앞에서 만든 파일 경로 추가
+sys.path.append("./")
+print(mymath.mypi)
+print(mymath.area(5))
+"""
+
+
+"""
+#matplotlib 패키지 사용
+import matplotlib.pyplot as plt
+fig = plt.figure(figsize=(10,6))
+plt.boxplot(([100, 87, 97, 65, 88], [87,88,86,87,88]))
+plt.grid()
+plt.show()
+fig.savefig("graph.png")
+"""
+
+import folium
+m = folium.Map(location=[37.572656, 126.973304], zoom_start=15)
+folium.Marker(location=[37.572656, 126.973304], popup="KB 국민카드",
+             icon=folium.Icon(icon='cloud')).add_to(m)
+folium.Marker(location=[37.569027, 126.987279], popup="메가IT",
+             icon=folium.Icon(color='red')).add_to(m)
+m
+m.save("map.html")

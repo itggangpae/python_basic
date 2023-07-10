@@ -342,6 +342,31 @@ stu.name = "아담"
 print(stu)
 """
 
+"""
+#== 연산자 오버로딩
+class Student:
+    def __init__(self, name="noname"):
+        self.__name = name
+
+    def setName(self, name):
+        self.__name = name
+
+    def getName(self):
+        return self.__name
+
+    def __eq__(self, other):
+        return self.name == other.name
+
+stu1 = Student()
+stu1.name = "아담"
+
+stu2 = Student()
+stu2.name = "아담"
+
+print("is:", stu1 is stu2)
+print("==:", stu1 == stu2)
+"""
+
 
 """
 class Square:
@@ -793,6 +818,7 @@ plt.show()
 fig.savefig("graph.png")
 """
 
+"""
 import folium
 m = folium.Map(location=[37.572656, 126.973304], zoom_start=15)
 folium.Marker(location=[37.572656, 126.973304], popup="KB 국민카드",
@@ -801,3 +827,4 @@ folium.Marker(location=[37.569027, 126.987279], popup="메가IT",
              icon=folium.Icon(color='red')).add_to(m)
 m
 m.save("map.html")
+"""

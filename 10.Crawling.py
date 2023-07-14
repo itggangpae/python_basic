@@ -293,6 +293,7 @@ for item in items:
     print(item.find('link').getText())
 """
 
+"""
 import requests
 import bs4
 url = 'https://dapi.kakao.com/v2/local/search/category.xml?category_group_code=PM9&rect=127.0561466,37.5058277,127.0602340,37.5142554'
@@ -311,3 +312,241 @@ for place_name in place_names:
     print(format(place_name.getText(), '30s'), end='\t')
     print(format(address_name.getText(), '30s'), end='\t')
     i = i + 1
+"""
+
+
+"""
+#크롬 실행
+from selenium import webdriver
+import os
+os.environ['webdriver.chrome.driver'] = '/Users/adam/Documents/lecture/python/1.Python/source/data/chromedriver'
+driver = webdriver.Chrome()
+while(True):
+    	pass
+"""
+
+"""
+#html 가져오기
+from selenium import webdriver
+import os
+os.environ['webdriver.chrome.driver'] = '/Users/adam/Documents/lecture/python/1.Python/source/data/chromedriver'
+driver = webdriver.Chrome()
+driver.get("https://pt.masanggames.co.kr/")
+print(driver.page_source)
+while(True):
+    	pass
+"""
+
+"""
+#다음 카페 로그인 페이지로 이동
+from selenium import webdriver
+import os
+os.environ['webdriver.chrome.driver'] = '/Users/adam/Documents/lecture/python/1.Python/source/data/chromedriver'
+driver = webdriver.Chrome()
+driver.implicitly_wait(5)
+
+#다음 카페 페이지로 이동 - 로그인 되어 있지 않으므로 로그인 페이지로 이동
+driver.get('https://accounts.kakao.com/login/?continue=https%3A%2F%2Flogins.daum.net%2Faccounts%2Fksso.do%3Frescue%3Dtrue%26url%3Dhttps%253A%252F%252Fwww.daum.net%252F&login_type=simple#login')
+driver.implicitly_wait(5)
+
+while(True):
+    	pass
+"""
+
+
+"""
+#다음 카페 로그인
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import os
+import time
+
+os.environ['webdriver.chrome.driver'] = '/Users/adam/Documents/lecture/python/1.Python/source/data/chromedriver'
+driver = webdriver.Chrome()
+driver.implicitly_wait(5)
+
+#다음 카페 페이지로 이동 - 로그인 되어 있지 않으므로 로그인 페이지로 이동
+driver.get('https://accounts.kakao.com/login/?continue=https%3A%2F%2Flogins.daum.net%2Faccounts%2Fksso.do%3Frescue%3Dtrue%26url%3Dhttps%253A%252F%252Fwww.daum.net%252F&login_type=simple#login')
+driver.implicitly_wait(5)
+
+#아이디 와 비밀번호 입력받기
+userid = input("아이디:")
+userpw = input("비밀번호:")
+time.sleep(3)
+
+#입력받은 내용을 삽입하기
+driver.find_element(By.XPATH, '//*[@id="loginId--1"]').send_keys(userid)
+driver.find_element(By.XPATH, '//*[@id="password--2"]').send_keys(userpw)
+
+#버튼
+btn = driver.find_element(By.XPATH, '//*[@id="mainContent"]/div/div/form/div[4]/button[1]')
+btn.click()
+
+while(True):
+    	pass
+"""
+
+"""
+#다음 카페 목록 페이지로 이동
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import os
+import time
+
+os.environ['webdriver.chrome.driver'] = '/Users/adam/Documents/lecture/python/1.Python/source/data/chromedriver'
+driver = webdriver.Chrome()
+driver.implicitly_wait(5)
+
+#다음 카페 페이지로 이동 - 로그인 되어 있지 않으므로 로그인 페이지로 이동
+driver.get('https://accounts.kakao.com/login/?continue=https%3A%2F%2Flogins.daum.net%2Faccounts%2Fksso.do%3Frescue%3Dtrue%26url%3Dhttps%253A%252F%252Fwww.daum.net%252F&login_type=simple#login')
+driver.implicitly_wait(5)
+
+#아이디 와 비밀번호 입력받기
+userid = input("아이디:")
+userpw = input("비밀번호:")
+time.sleep(3)
+
+#입력받은 내용을 삽입하기
+driver.find_element(By.XPATH, '//*[@id="loginId--1"]').send_keys(userid)
+driver.find_element(By.XPATH, '//*[@id="password--2"]').send_keys(userpw)
+
+#버튼
+btn = driver.find_element(By.XPATH, '//*[@id="mainContent"]/div/div/form/div[4]/button[1]')
+btn.click()
+
+time.sleep(3)
+driver.get('http://top.cafe.daum.net/_c21_/my_cafe')
+
+time.sleep(3)
+driver.find_element(By.XPATH, '//*[@id="mArticle"]/div/div[1]/div/div[2]/ul/li/a').click()
+
+while(True):
+    	pass
+"""
+
+
+"""
+#다음 카페 목록 페이지로 이동
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import os
+import time
+
+os.environ['webdriver.chrome.driver'] = '/Users/adam/Documents/lecture/python/1.Python/source/data/chromedriver'
+driver = webdriver.Chrome()
+driver.implicitly_wait(5)
+
+#다음 카페 페이지로 이동 - 로그인 되어 있지 않으므로 로그인 페이지로 이동
+driver.get('https://accounts.kakao.com/login/?continue=https%3A%2F%2Flogins.daum.net%2Faccounts%2Fksso.do%3Frescue%3Dtrue%26url%3Dhttps%253A%252F%252Fwww.daum.net%252F&login_type=simple#login')
+driver.implicitly_wait(5)
+
+#아이디 와 비밀번호 입력받기
+userid = input("아이디:")
+userpw = input("비밀번호:")
+time.sleep(3)
+
+#입력받은 내용을 삽입하기
+driver.find_element(By.XPATH, '//*[@id="loginId--1"]').send_keys(userid)
+driver.find_element(By.XPATH, '//*[@id="password--2"]').send_keys(userpw)
+
+#버튼
+btn = driver.find_element(By.XPATH, '//*[@id="mainContent"]/div/div/form/div[4]/button[1]')
+btn.click()
+
+time.sleep(3)
+driver.get('http://top.cafe.daum.net/_c21_/my_cafe')
+
+time.sleep(3)
+driver.find_element(By.XPATH, '//*[@id="mArticle"]/div/div[1]/div/div[2]/ul/li/a').click()
+
+# 메모 작성
+time.sleep(3)
+driver.get('http://cafe.daum.net/samhak7/_memo')
+
+time.sleep(3)
+driver.switch_to.frame('down')
+driver.find_element(By.XPATH, '//*[@id="primaryContent"]/div/div[1]/div[2]/div/div/div[1]/textarea').send_keys(
+	'모두들 안녕 매크로 연습이야')
+
+time.sleep(3)
+driver.find_element(By.XPATH, '//*[@id="primaryContent"]/div/div[1]/div[2]/div/div/div[2]/div[2]/div/button').click()
+
+time.sleep(3)
+driver.get('http://top.cafe.daum.net/_c21_/my_cafe')
+
+time.sleep(3)
+driver.find_element(By.XPATH,
+	'//*[@id="mArticle"]/div/div[2]/div[2]/ul/li[1]/div[1]/a/div[2]/div/div/div[1]/strong').click()
+
+while(True):
+    	pass
+"""
+
+
+"""
+#크롬 브라우저를 구동하지 않고 데이터 가져오기
+from selenium import webdriver
+import os
+
+options = webdriver.ChromeOptions()
+options.add_argument('headless')
+options.add_argument('window-size=1920x1080')
+options.add_argument("disable-gpu")
+# 혹은 options.add_argument("--disable-gpu")
+
+# Chrome의 경우 | 아까 받은 chromedriver의 위치를 지정
+os.environ['webdriver.chrome.driver'] = '/Users/adam/Documents/lecture/python/1.Python/source/data/chromedriver'
+driver = webdriver.Chrome(options=options)
+driver.get('https://www.naver.com')
+html = driver.page_source
+print(html)
+"""
+
+"""
+#네이버 자동 로그인
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import os
+import time
+
+# Chrome의 경우 | 아까 받은 chromedriver의 위치를 지정
+os.environ['webdriver.chrome.driver'] = '/Users/adam/Documents/lecture/python/1.Python/source/data/chromedriver'
+driver = webdriver.Chrome()
+driver.get('https://nid.naver.com/nidlogin.login')
+time.sleep(3)
+
+userid = input("아이디:")
+userpw = input("비밀번호:")
+
+driver.execute_script("document.getElementsByName('id')[0].value=\'" + userid + "\'")
+driver.execute_script("document.getElementsByName('pw')[0].value=\'" + userpw + "\'")
+driver.find_element(By.XPATH, '//*[@id="log.login"]').click()
+while(True):
+    	pass
+"""
+
+
+"""
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import os
+import time
+from selenium.webdriver.common.keys import Keys
+import bs4
+
+os.environ['webdriver.chrome.driver'] = '/Users/adam/Documents/lecture/python/1.Python/source/data/chromedriver'
+driver = webdriver.Chrome()
+
+driver.get('https://www.youtube.com/results?search_query=%EB%A7%88%EB%A7%88%EB%AC%B4')
+time.sleep(5)
+body = driver.find_element(By.TAG_NAME, 'body')  # 스크롤하기 위해 소스 추출
+num_of_pagedowns = 10
+# 10번 밑으로 내리는 것
+while num_of_pagedowns:
+	body.send_keys(Keys.PAGE_DOWN)
+	time.sleep(2)
+	num_of_pagedowns -= 1
+
+html = bs4.BeautifulSoup(driver.page_source, 'html.parser')
+print(html)
+"""
